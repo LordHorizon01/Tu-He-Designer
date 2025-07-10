@@ -1,6 +1,12 @@
 /* ===============================
    GLOBAL RESET & BASE STYLES
 ================================= */
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -338,14 +344,38 @@ footer p {
   font-size: 0.85rem;
   color: #aaa;
 }
-body > video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    min-width: 100vw;
-    min-height: 100vh;
-    width: auto;
-    height: auto;
-    z-index: -1; /* Puts the video behind all other content */
-    object-fit: cover;
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@media screen and (max-width: 768px) {
+  .hero {
+    padding: 3rem 1rem;
+  }
+
+  .navbar ul {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .product-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-card {
+    width: 90%;
+  }
+
+  .auth-buttons {
+    flex-direction: column;
+    gap: 5px;
+  }
 }
