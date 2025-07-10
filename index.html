@@ -1,0 +1,141 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TuHeDesigner</title>
+
+  <!-- Fonts + Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <!-- Main Website CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Auth Popup CSS -->
+  <link rel="stylesheet" href="auth.css">
+
+  <!-- JS (deferred loading) -->
+  <script src="auth.js" defer></script>
+  <script src="main.js" defer></script> <!-- Your main site's JS -->
+</head>
+<video autoplay muted loop playsinline>
+    <source src="video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <div class="logo">
+      <img src="Tu He DEsigner logo(2).jpg" alt="TuHeDesigner Logo" >
+    </div>
+    <nav class="navbar">
+      <ul>
+        <li><a href="index.html" id="homeLink">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#" id="categoriesLink">Categories</a></li>
+        <li><a href="#">Offers</a></li>
+        <li><a href="#" id="contactLink">Contact</a></li>
+      </ul>
+      <div class="nav-icons">
+        <input type="text" placeholder="Search" class="search-bar" />
+        <i class="fas fa-search"></i>
+
+        <!-- Auth Buttons -->
+        <div class="auth-buttons">
+          <button onclick="showPopup('registerPopup')">Register</button>
+          <button onclick="showPopup('loginPopup')">Login</button>
+          <div id="profileBox" style="display: none;"></div>
+        </div>
+
+        <i class="fas fa-shopping-cart"></i>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>#Banale Tu</h1>
+    <p>Express your style. Shop bold, shop funky.</p>
+    <a href="#" class="btn">Start Shopping</a>
+  </section>
+
+  <!-- Product Section -->
+  <section class="products" id="customizableCategories">
+    <h2>🔥Our Customizable Categories🔥</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://thebanyantee.com/cdn/shop/files/Screenshot2024-05-10at12.21.59PM.png?v=1715324076" alt="T-Shirt" />
+        <h3>Mugs Banale</h3>
+        <p>From ₹399</p>
+        <a href="customize_tshirt.html" class="product-card-button">Customise Now !!</a>
+      </div>
+      <div class="product-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVzOMB7DvEUz9KRUjFtKPQFN1JJ_CaPP9vGw&s" alt="Mug" />
+        <h3>T-Shirts Banale</h3>
+        <p>From ₹799</p>
+        <a href="customize_mug.html" class="product-card-button">Customise Now !!</a>
+      </div>
+      <div class="product-card">
+        <img src="https://assets.mediamodifier.com/mockups/67bdfa7739c302b852c7793c/bedroom-wall-frame-mockup-for-interior-art-displays_thumb.jpg" alt="Frame" />
+        <h3>Frames Banale</h3>
+        <p>From ₹599</p>
+        <a href="customize_frame.html" class="product-card-button">Customise Now !!</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Auth Popup HTML (Register + Login) -->
+  <div id="registerPopup" class="popup-overlay">
+    <div class="popup-box">
+      <h2>Register</h2>
+      <input type="text" id="regName" placeholder="Full Name">
+      <input type="email" id="regEmail" placeholder="Email">
+      <input type="password" id="regPass" placeholder="Password">
+      <button class="login-btn" onclick="submitRegistration()">Register</button>
+      <button class="close-btn" onclick="closePopup('registerPopup')">Close</button>
+    </div>
+  </div>
+
+  <div id="loginPopup" class="popup-overlay">
+    <div class="popup-box">
+      <h2>Login</h2>
+      <input type="email" id="loginEmail" placeholder="Email">
+      <input type="password" id="loginPass" placeholder="Password">
+      <button class="login-btn" onclick="submitLogin()">Login</button>
+      <button class="close-btn" onclick="closePopup('loginPopup')">Close</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h4>Tu Hi Designer</h4>
+        <p>Banale Tu – Style it Your Way.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Return Policy</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+    </div>
+    <p>© 2025 Tu Hi Designer. All rights reserved.</p>
+  </footer>
+<script src="script.js" defer></script>
+
+</body>
+</html>

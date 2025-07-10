@@ -1,0 +1,351 @@
+/* ===============================
+   GLOBAL RESET & BASE STYLES
+================================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #fffdf8;
+  color: #2f2f2f;
+}
+
+/* ===============================
+   HEADER & NAVBAR
+================================= */
+header {
+  background-color: #fff;
+  padding: 0.6rem 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+
+.logo img {
+  height: 70px;
+  width: 150px;
+  display: block;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #2f2f2f;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+  color: #ff914d;
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.search-bar {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 0.9rem;
+}
+
+/* ===============================
+   HERO SECTION
+================================= */
+.hero {
+  padding: 5rem 4rem;
+  text-align: center;
+  color: #b89696;
+  background: url('https://printify.com/wp-content/uploads/2024/12/Blog-CTA-OptionLarge-SizeDesktop-1536x318.png') no-repeat center;
+  background-size: cover;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  padding: 0.7rem 1.5rem;
+  background-color: #ffb347;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #ffa366;
+}
+
+/* ===============================
+   PRODUCT SECTION
+================================= */
+.products {
+  padding: 2rem;
+  text-align: center;
+}
+
+.products h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: orange;
+  font-style: italic;
+}
+
+.product-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  width: 220px;
+  height: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  justify-content: space-between;
+}
+
+.product-card:hover {
+  transform: scale(1.03);
+}
+
+.product-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product-card h3 {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.product-card p {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.product-card-button {
+  padding: 0.5rem 1rem;
+  background-color: #ffb347;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.product-card-button:hover {
+  background-color: #ffa366;
+}
+
+/* ===============================
+   AUTH POPUP (LOGIN / REGISTER)
+================================= */
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.auth-buttons button {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #2f2f2f;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.auth-buttons button:hover {
+  background-color: #444;
+}
+
+/* Popup Styles */
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup-box {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 350px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.popup-box input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.login-btn,
+.close-btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.login-btn {
+  background-color: black;
+  color: white;
+}
+
+.close-btn {
+  background-color: #ccc;
+  color: black;
+}
+
+#profileBox {
+  font-size: 0.9rem;
+  background: #eee;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+/* ===============================
+   FOOTER
+================================= */
+footer {
+  background-color: #2f2f2f;
+  color: #eee;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  margin-top: 3rem;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-section h4 {
+  color: #ffb347;
+  margin-bottom: 0.8rem;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.4rem;
+}
+
+.footer-section ul li a {
+  color: #eee;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+  color: #ffa366;
+}
+
+.social-icons a {
+  color: #eee;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #ffb347;
+}
+
+footer p {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+body > video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    width: auto;
+    height: auto;
+    z-index: -1; /* Puts the video behind all other content */
+    object-fit: cover;
+}
