@@ -1,20 +1,25 @@
-// Show popup
+// =======================================
+// 📌 SHOW / HIDE POPUP (Login & Register)
+// =======================================
 function showPopup(id) {
   document.getElementById(id).style.display = "flex";
 }
 
-// Hide popup
 function closePopup(id) {
   document.getElementById(id).style.display = "none";
 }
 
-// Validate email format
+// =======================================
+// 📌 EMAIL VALIDATION FUNCTION
+// =======================================
 function isValidEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
 
-// Register new user
+// =======================================
+// 📌 USER REGISTRATION
+// =======================================
 function submitRegistration() {
   const name = document.getElementById("regName").value.trim();
   const email = document.getElementById("regEmail").value.trim();
@@ -42,14 +47,16 @@ function submitRegistration() {
 
   users.push({ name, email, password });
   localStorage.setItem("users", JSON.stringify(users));
-  alert("Registration successful. Please log in.");
 
+  alert("Registration successful. Please log in.");
   closePopup("registerPopup");
   clearInputs(["regName", "regEmail", "regPass"]);
   setTimeout(() => showPopup("loginPopup"), 300);
 }
 
-// Login user
+// =======================================
+// 📌 USER LOGIN
+// =======================================
 function submitLogin() {
   const email = document.getElementById("loginEmail").value.trim();
   const password = document.getElementById("loginPass").value;
@@ -70,7 +77,9 @@ function submitLogin() {
   displayProfile();
 }
 
-// Clear input fields
+// =======================================
+// 📌 CLEAR INPUTS
+// =======================================
 function clearInputs(ids) {
   ids.forEach(id => {
     const el = document.getElementById(id);
@@ -78,7 +87,9 @@ function clearInputs(ids) {
   });
 }
 
-// Display logged-in user's name
+// =======================================
+// 📌 DISPLAY PROFILE AFTER LOGIN
+// =======================================
 function displayProfile() {
   const users = JSON.parse(localStorage.getItem("users")) || [];
   const currentEmail = localStorage.getItem("currentUser");
@@ -88,52 +99,78 @@ function displayProfile() {
     const profileBox = document.getElementById("profileBox");
     profileBox.innerHTML = `
       <span style="color: black;">Hello, ${user.name.split(" ")[0]}</span>
-      <button onclick="logout()" style="margin-left: 10px; font-size: 12px;">Logout</button>
+      <button onclick="logout()" style="
+        margin-left: 10px;
+        padding: 4px 8px;
+        background-color: #f44336;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 12px;
+      ">Logout</button>
     `;
     profileBox.style.display = "inline-block";
+
+    // Hide auth buttons
+    document.querySelectorAll(".auth-buttons button").forEach(btn => {
+      btn.style.display = "none";
+    });
   }
 }
 
-// Logout current user
+// =======================================
+// 📌 LOGOUT FUNCTION
+// =======================================
 function logout() {
-  localStorage.removeItem("isLoggedIn");
   localStorage.removeItem("currentUser");
-  const box = document.getElementById("profileBox");
-  if (box) box.style.display = "none";
+  localStorage.removeItem("isLoggedIn");
+
+  const profileBox = document.getElementById("profileBox");
+  profileBox.style.display = "none";
+  profileBox.innerHTML = "";
+
+  // Show auth buttons
+  document.querySelectorAll(".auth-buttons button").forEach(btn => {
+    btn.style.display = "inline-block";
+  });
 }
 
-// On page load: check login status
-window.onload = function () {
-  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-  if (isLoggedIn) {
+// =======================================
+// 📌 PAGE LOAD: CHECK LOGIN STATE
+// =======================================
+window.addEventListener("load", () => {
+  if (localStorage.getItem("isLoggedIn") === "true") {
     displayProfile();
   }
-}
-// ============================
-// Navigation Links Interactions
-// ============================
-document.addEventListener('DOMContentLoaded', function() {
-  const homeLink = document.getElementById('homeLink');
-  const categoriesLink = document.getElementById('categoriesLink');
-  const contactLink = document.getElementById('contactLink');
+});
 
-  // Smooth scroll to Categories section
-  categoriesLink.addEventListener('click', function(event) {
+// =======================================
+// 📌 NAVIGATION INTERACTIONS
+// =======================================
+document.addEventListener("DOMContentLoaded", () => {
+  const categoriesLink = document.getElementById("categoriesLink");
+  const contactLink = document.getElementById("contactLink");
+
+  // Scroll to Categories section
+  categoriesLink.addEventListener("click", function (event) {
     event.preventDefault();
-    const categoriesSection = document.getElementById('customizableCategories');
-    if (categoriesSection) {
-      categoriesSection.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
+    const section = document.getElementById("customizableCategories");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   });
 
-  // Show phone numbers on Contact click
-  contactLink.addEventListener('click', function(event) {
+  // Show contact modal
+  contactLink.addEventListener("click", function (event) {
     event.preventDefault();
-    const phoneNumber1 = '8393409285';
-    const phoneNumber2 = '8223491036';
-    alert(`You can reach us at:\n${phoneNumber1}\n${phoneNumber2}`);
+    document.getElementById("contactModal").style.display = "flex";
   });
 });
+
+// =======================================
+// 📌 CONTACT MODAL CLOSE
+// =======================================
+function closeContactModal() {
+  document.getElementById("contactModal").style.display = "none";
+}
