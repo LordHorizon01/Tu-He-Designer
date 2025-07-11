@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -12,25 +12,20 @@
   <!-- Main Website CSS -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- Auth Popup CSS -->
-  <link rel="stylesheet" href="auth.css">
-
   <!-- JS (deferred loading) -->
-  <script src="auth.js" defer></script>
-  <script src="main.js" defer></script> <!-- Your main site's JS -->
+  <script src="script.js" defer></script>
 </head>
-
 <body>
-  <video autoplay muted loop playsinline class="bg-video">
+  <!-- Background video -->
+  <video autoplay muted loop playsinline>
     <source src="video.mp4" type="video/mp4">
-    Your browser does not support the video tag.
+    Your browser does not support the video tag.
   </video>
+
   <!-- Header Section -->
   <header>
-    <div class="logo-container">
-      <div class="logo">
-        <img src="Tu He DEsigner logo(2).jpg" alt="TuHeDesigner Logo" >
-      </div>
+    <div class="logo">
+      <img src="tuhidesignerlogo.jpg" alt="TuHeDesigner Logo">
     </div>
     <nav class="navbar">
       <ul>
@@ -40,6 +35,7 @@
         <li><a href="#">Offers</a></li>
         <li><a href="#" id="contactLink">Contact</a></li>
       </ul>
+
       <div class="nav-icons">
         <input type="text" placeholder="Search" class="search-bar" />
         <i class="fas fa-search"></i>
@@ -48,8 +44,10 @@
         <div class="auth-buttons">
           <button onclick="showPopup('registerPopup')">Register</button>
           <button onclick="showPopup('loginPopup')">Login</button>
-          <div id="profileBox" style="display: none;"></div>
         </div>
+
+        <!-- Profile Box for Logged-in user -->
+        <div id="profileBox" style="display: none; margin-left: 15px;"></div>
 
         <i class="fas fa-shopping-cart"></i>
       </div>
@@ -71,25 +69,25 @@
         <img src="https://thebanyantee.com/cdn/shop/files/Screenshot2024-05-10at12.21.59PM.png?v=1715324076" alt="T-Shirt" />
         <h3>Mugs Banale</h3>
         <p>From ₹399</p>
-        <a href="customize_tshirt.html" class="product-card-button">Customise Now !!</a>
+        <a href="customize_mugs.html" class="product-card-button">Customise Now !!</a>
       </div>
       <div class="product-card">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVzOMB7DvEUz9KRUjFtKPQFN1JJ_CaPP9vGw&s" alt="Mug" />
         <h3>T-Shirts Banale</h3>
         <p>From ₹799</p>
-        <a href="customize_mug.html" class="product-card-button">Customise Now !!</a>
+        <a href="customize_tshirt.html" class="product-card-button">Customise Now !!</a>
       </div>
       <div class="product-card">
         <img src="https://assets.mediamodifier.com/mockups/67bdfa7739c302b852c7793c/bedroom-wall-frame-mockup-for-interior-art-displays_thumb.jpg" alt="Frame" />
         <h3>Frames Banale</h3>
         <p>From ₹599</p>
-        <a href="customize_frame.html" class="product-card-button">Customise Now !!</a>
+        <a href="customize_frames.html" class="product-card-button">Customise Now !!</a>
       </div>
     </div>
   </section>
 
-  <!-- Auth Popup HTML (Register + Login) -->
-  <div id="registerPopup" class="popup-overlay">
+  <!-- Register Popup -->
+  <div id="registerPopup" class="popup-overlay" style="display: none;">
     <div class="popup-box">
       <h2>Register</h2>
       <input type="text" id="regName" placeholder="Full Name">
@@ -100,13 +98,28 @@
     </div>
   </div>
 
-  <div id="loginPopup" class="popup-overlay">
+  <!-- Login Popup -->
+  <div id="loginPopup" class="popup-overlay" style="display: none;">
     <div class="popup-box">
       <h2>Login</h2>
       <input type="email" id="loginEmail" placeholder="Email">
       <input type="password" id="loginPass" placeholder="Password">
       <button class="login-btn" onclick="submitLogin()">Login</button>
       <button class="close-btn" onclick="closePopup('loginPopup')">Close</button>
+    </div>
+  </div>
+
+  <!-- Contact Modal -->
+  <div id="contactModal" class="popup-overlay" style="display: none;">
+    <div class="popup-box">
+      <h2>Contact Us</h2>
+      <p style="margin-bottom: 10px;">You can reach us at:</p>
+      <ul style="list-style: none; padding: 0;">
+        <li><strong>Phone 1:</strong> 8393409285</li>
+        <li><strong>Phone 2:</strong> 8223491036</li>
+        <li><strong>Email:</strong> support@tuhidesigner.com</li>
+      </ul>
+      <button onclick="closePopup('contactModal')" class="close-btn">Close</button>
     </div>
   </div>
 
@@ -137,7 +150,5 @@
     </div>
     <p>© 2025 Tu Hi Designer. All rights reserved.</p>
   </footer>
-<script src="script.js" defer></script>
-
 </body>
 </html>
